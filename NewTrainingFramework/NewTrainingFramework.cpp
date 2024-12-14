@@ -1,6 +1,4 @@
 ﻿#include "stdafx.h"
-#include "../Utilities/utilities.h" // if you use STL, please include this line AFTER all other include
-#include "Vertex.h"
 #include "Shaders.h"
 #include <conio.h>
 #include "Globals.h"
@@ -10,6 +8,8 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include "ResourceManager.h"
+#include "../Utilities/utilities.h" // if you use STL, please include this line AFTER all other include
 
 #define PI 3.14159265358979323846
 
@@ -106,7 +106,7 @@ int Init(ESContext* esContext) {
     // creation of shaders and program 
     myShaders.Init("../Resources/Shaders/TriangleShaderVS.vs", "../Resources/Shaders/TriangleShaderFS.fs");
     lineShaders.Init("../Resources/Shaders/LineShaderVS.vs", "../Resources/Shaders/LineShaderFS.fs");*/
-
+    /*
     std::vector<Vertex> vertices;
     std::vector<unsigned short> indices;
     
@@ -137,6 +137,11 @@ int Init(ESContext* esContext) {
     glBindTexture(GL_TEXTURE_2D, 0);
     
     return modelShader.Init("../Resources/Shaders/ModelShaderVS.vs", "../Resources/Shaders/ModelShaderFS.fs");
+    */
+    ResourceManager* resourceManager = ResourceManager::getInstance();
+    resourceManager->initialize("C:/Users/andre/OneDrive/Desktop/proiect_2015/NewResourcesPacket/resourceManager.xml");
+
+    return 0;
 }
 
 void Draw(ESContext* esContext) {
@@ -178,7 +183,7 @@ void Draw(ESContext* esContext) {
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);*/
 
-
+    /*
     glUseProgram(modelShader.program);
 
     glBindBuffer(GL_ARRAY_BUFFER, modelVboId);
@@ -213,6 +218,7 @@ void Draw(ESContext* esContext) {
     glBindTexture(GL_TEXTURE_2D, 0);
 
     eglSwapBuffers(esContext->eglDisplay, esContext->eglSurface);
+    */
 }
 
 void Update(ESContext* esContext, float deltaTime) {
