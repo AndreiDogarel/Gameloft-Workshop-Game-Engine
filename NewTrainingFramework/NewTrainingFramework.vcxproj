@@ -170,6 +170,7 @@
     <ClCompile Include="NewTrainingFramework.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Shaders.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -185,6 +186,8 @@
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SceneObject.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="Shaders.h" />
     <ClInclude Include="stdafx.h" />

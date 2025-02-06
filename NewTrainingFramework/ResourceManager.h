@@ -14,9 +14,9 @@ class ResourceManager
 {
 private:
 	static ResourceManager* instance;
-	std::map<int, Model*> modelResources;
-	std::map<int, Shader*> shaderResources;
-	std::map<int, Texture*> textureResources;
+	std::map<int, ModelResource*> modelResources;
+	std::map<int, ShaderResource*> shaderResources;
+	std::map<int, TextureResource*> textureResources;
 
 	ResourceManager() = default;
 
@@ -29,5 +29,8 @@ public:
 	Model* loadModel(ModelResource* _model);
 	Shader* loadShader(ShaderResource* _shader);
 	Texture* loadTexture(TextureResource* _texture);
+	std::map<int, ModelResource*> getModelResources() { return modelResources; }
+	std::map<int, ShaderResource*> getShaderResources() { return shaderResources; }
+	std::map<int, TextureResource*> getTextureResources() { return textureResources; }
 };
 

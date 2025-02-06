@@ -139,7 +139,7 @@ int Init(ESContext* esContext) {
     return modelShader.Init("../Resources/Shaders/ModelShaderVS.vs", "../Resources/Shaders/ModelShaderFS.fs");
     */
     ResourceManager* resourceManager = ResourceManager::getInstance();
-    resourceManager->initialize("C:/Users/andre/OneDrive/Desktop/proiect_2015/NewResourcesPacket/resourceManager.xml");
+    resourceManager->initialize("C:/Users/andre/Documents/GitHub/Proiect Gameloft/NewResourcesPacket/resourceManager.xml");
 
     return 0;
 }

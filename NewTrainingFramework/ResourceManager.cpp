@@ -40,8 +40,7 @@ void ResourceManager::parseXML(const std::string& filePath) {
                 model->id = std::stoi(idAttr->value());
                 model->fileName = fileNode->value();
                 model->filePath = modelFolder->first_attribute()->value();
-                Model* modelObject = new Model(model);
-                modelResources[model->id] = modelObject;
+                modelResources[model->id] = model;
             }
         }
     }
@@ -62,8 +61,7 @@ void ResourceManager::parseXML(const std::string& filePath) {
                 shader->vertexShader = vsNode->value();
                 shader->fragmentShader = fsNode->value();
                 shader->filePath = shaderFolder->first_attribute()->value();
-                Shader* shaderObject = new Shader(shader);
-                shaderResources[shader->id] = shaderObject;
+                shaderResources[shader->id] = shader;
             }
         }
     }
@@ -92,8 +90,7 @@ void ResourceManager::parseXML(const std::string& filePath) {
                 texture->mag_filter = mapStringToGLenum(magFilterNode->value());
                 texture->wrap_s = mapStringToGLenum(wrapSNode->value());
                 texture->wrap_t = mapStringToGLenum(wrapTNode->value());
-                Texture* textureObject = new Texture(texture);
-                textureResources[texture->id] = textureObject;
+                textureResources[texture->id] = texture;
             }
         }
     }
@@ -104,28 +101,37 @@ void ResourceManager::initialize(const std::string& xmlPath) {
 }
 
 Model* ResourceManager::loadModel(ModelResource* _model) {
-    if (modelResources.find((*_model).id) != modelResources.end())
-        return modelResources[(*_model).id];
+    if (modelResources.find((*_model).id) != modelResources.end()) {
+        Model* model = new Model(_model);
+		model->Load();
+        return model;
+    }
     Model* model = new Model(_model);
     model->Load();
-    modelResources[(*_model).id] = model;
+    modelResources[(*_model).id] = _model;
     return model;
 }
 
 Shader* ResourceManager::loadShader(ShaderResource* _shader) {
-    if (shaderResources.find((*_shader).id) != shaderResources.end())
-        return shaderResources[(*_shader).id];
+    if (shaderResources.find((*_shader).id) != shaderResources.end()) {
+        Shader* shader = new Shader(_shader);
+        shader->Load();
+        return shader;
+    }
     Shader* shader = new Shader(_shader);
     shader->Load();
-    shaderResources[(*_shader).id] = shader;
+    shaderResources[(*_shader).id] = _shader;
     return shader;
 }
 
 Texture* ResourceManager::loadTexture(TextureResource* _texture) {
-    if (textureResources.find((*_texture).id) != textureResources.end())
-        return textureResources[(*_texture).id];
+    if (textureResources.find((*_texture).id) != textureResources.end()) {
+        Texture* texture = new Texture(_texture);
+        texture->Load();
+		return texture;
+    }
     Texture* texture = new Texture(_texture);
     texture->Load();
-    textureResources[(*_texture).id] = texture;
+    textureResources[(*_texture).id] = _texture;
     return texture;
 }

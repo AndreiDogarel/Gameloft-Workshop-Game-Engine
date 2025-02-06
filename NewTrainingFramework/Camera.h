@@ -12,6 +12,7 @@ public:
 		xAxis, yAxis, zAxis;
 	Matrix
 		viewMatrix, worldMatrix, perspectiveMatrix;
+	int Id;
 
 	Camera();
 	Camera(Vector3 position, Vector3 target, Vector3 up,
@@ -27,5 +28,6 @@ public:
 	void updateAxes();
 	void updateWorldView();
 	void setDeltaTime(GLfloat deltaTime);
-
+	void setId(int id);
+	int getId();
 };

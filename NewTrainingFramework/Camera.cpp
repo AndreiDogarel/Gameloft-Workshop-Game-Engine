@@ -170,3 +170,11 @@ void Camera::updateAxes() {
 	yAxis = up.Normalize();
 	xAxis = zAxis.Cross(yAxis).Normalize();
 }
+
+void Camera::setId(int id) {
+	this->Id = id;
+}
+
+int Camera::getId() {
+	return this->Id;
+}
