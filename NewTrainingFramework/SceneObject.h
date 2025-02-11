@@ -18,7 +18,7 @@ public:
     Vector3 rotation;
     Vector3 scale;
     Model* model;
-    Shader* shader;
+    Shaders* shader;
     std::vector<Texture*> textures;
     bool depthTest;
     bool wiredFormat;

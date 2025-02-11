@@ -11,7 +11,9 @@ SceneObject::~SceneObject() {
 }
 
 void SceneObject::Draw() {
-    
+	glUseProgram(shader->program);
+	sendCommonData();
+	sendSpecificData();
 }
 
 void SceneObject::Update(float deltaTime) {
